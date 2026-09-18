@@ -72,6 +72,21 @@ Everything (ROI/pixel/fit-init definitions) is saved to a small
 picks up where you left off; per-pixel fit result arrays go to
 `outputs/` — both directories are gitignored/regenerable.
 
+## Suggested next steps
+
+This notebook is scoped to **one dataset at a time** — load a `.mat`, define
+ROIs/pixels, fit, done. Once you've run it over several datasets (several
+temperatures, several samples, before/after some change), each one leaves
+behind its own `analysis/<name>_meta/metadata.json` (saved ROIs/pixels/fit
+inits) and `outputs/<name>_meta/<name>_fit.npz` (the 2D fit-parameter maps,
+via `widefieldesr.load_fit_maps`). The natural next step is a **second
+notebook** that loads several of these `*_fit.npz` files together and
+compares them — e.g. dip depth/center-frequency maps side by side, or a
+summary quantity (mean splitting, a linecut, a derived pressure/field value)
+plotted across temperature or sample. Keep that as its own notebook rather
+than growing this one, so each stays focused: one dataset in, one comparison
+across datasets out.
+
 ## Notes for reuse
 
 - `widefieldesr`/`labplot` are vendored (copied, not a git submodule) so
