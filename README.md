@@ -14,17 +14,18 @@ reasons that matters here:
 - **Reactive** — cells re-run automatically when an upstream cell or UI
   widget changes, so the ROI/pixel/fit state shown is always consistent with
   the current inputs (no stale-cell bugs from running cells out of order).
-- **Pure Python file** — it's a plain `.py` file (no JSON/ipynb wrapper),
-  so it diffs and reviews cleanly in git.
-- **Runs headless** — `uv run python notebooks/widefield_esr_analysis.py`
-  executes the whole thing top to bottom as a script, which is what this
-  repo uses as its smoke test.
+- **Pure Python file** — it's a plain `.py` file (no JSON/ipynb wrapper), so
+  it diffs and reviews cleanly in git, and is friendly to coding agents like
+  Claude Code — they can just `Read`/`Edit` it like any other source file
+  instead of fighting a notebook's JSON cell/output structure.
+- **Watch mode** — `uv run marimo edit --watch
+  notebooks/widefield_esr_analysis.py` reloads the notebook from disk and
+  re-runs affected cells whenever the file changes on disk, so an editor or
+  agent editing the `.py` file directly shows up live in the running
+  notebook.
 - **Built-in UI widgets** — the ROI/Pixel/Fitting Managers in this notebook
   are just `mo.ui.*` elements (sliders, tables, buttons); no separate
   ipywidgets setup needed.
-- **Reproducible by construction** — marimo statically tracks cell
-  dependencies from variable names, which rules out the "ran cells in the
-  wrong order" class of bug common in Jupyter.
 
 ## What's here
 
