@@ -1,9 +1,30 @@
 # widefieldesr-example
 
 A minimal, self-contained example of the `widefieldesr` widefield-ODMR
-analysis pipeline: one marimo notebook, its two dependencies vendored in
-(`widefieldesr`, `labplot`), and a small synthetic sample dataset — so it
-runs standalone with no access to the original lab data or Dropbox.
+analysis pipeline, from the Yao Lab at Harvard: one marimo notebook, its two
+dependencies vendored in (`widefieldesr`, `labplot`), and a small synthetic
+sample dataset — so it runs standalone with no access to the original lab
+data or Dropbox.
+
+## Why marimo
+
+The notebook is a [marimo](https://marimo.io) notebook, not Jupyter. A few
+reasons that matters here:
+
+- **Reactive** — cells re-run automatically when an upstream cell or UI
+  widget changes, so the ROI/pixel/fit state shown is always consistent with
+  the current inputs (no stale-cell bugs from running cells out of order).
+- **Pure Python file** — it's a plain `.py` file (no JSON/ipynb wrapper),
+  so it diffs and reviews cleanly in git.
+- **Runs headless** — `uv run python notebooks/widefield_esr_analysis.py`
+  executes the whole thing top to bottom as a script, which is what this
+  repo uses as its smoke test.
+- **Built-in UI widgets** — the ROI/Pixel/Fitting Managers in this notebook
+  are just `mo.ui.*` elements (sliders, tables, buttons); no separate
+  ipywidgets setup needed.
+- **Reproducible by construction** — marimo statically tracks cell
+  dependencies from variable names, which rules out the "ran cells in the
+  wrong order" class of bug common in Jupyter.
 
 ## What's here
 
