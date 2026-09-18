@@ -1,0 +1,25 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Environment / secrets
+.env
+
+# Regenerable analysis outputs
+/outputs/
+/analysis/
+
+# marimo
+**/__marimo__/
+
+# Data -- the one bundled sample is the explicit exception; anything else
+# you add locally (your own real data) should NOT be tracked.
+/data/*
+!/data/sample_odmr.mat

@@ -1,0 +1,18 @@
+[project]
+name = "widefieldesr-example"
+version = "0.1.0"
+description = "Minimal, self-contained example: widefieldesr's ODMR analysis notebook + its dependencies (widefieldesr, labplot) + a small synthetic sample dataset."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "widefieldesr",
+    "marimo>=0.16",
+    "numpy>=1.26",
+    "scipy>=1.11",
+]
+
+[tool.uv]
+package = false
+
+[tool.uv.sources]
+widefieldesr = { path = "lib/widefieldesr", editable = true }
